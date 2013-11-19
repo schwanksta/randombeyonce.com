@@ -30,8 +30,7 @@
             </div>
         </div>
     </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script type="text/javascript">
         var video_el = document.getElementById('video');
         var beyonces = [
@@ -54,14 +53,41 @@
             "RioOJ7dZxuw",
             "ViwtNLUqkMY",
         ];
+
+        var array_pop = function(arr, i) {
+            // slice() modifies the array in-place and returns an array
+            // of the element we want.
+            return arr.splice(i,1)[0]; 
+        }
+
         var get_random_beyonce = function() {
             var i = Math.floor((Math.random()*beyonces.length));
-            return embed_from_id(beyonces[i]); 
+            // Pops out the video ID we're using so we don't re-use
+            return array_pop(beyonces, i);
         }
-        var embed_from_id = function(id) {
-            return '<iframe width="0" height="0" src="//www.youtube.com/embed/' + id + '?autoplay=1" frameborder="0" allowfullscreen></iframe>';
+
+
+        // 3. This function creates an <iframe> (and YouTube player)
+        //    after the API code downloads.
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('video', {
+                height: '0',
+                width: '0',
+                videoId: get_random_beyonce(),
+                events: {
+                  'onReady': function onPlayerReady(event) {
+                        event.target.playVideo();
+                  },
+                  'onStateChange': function onPlayerStateChange(event) {
+                        // When the video is done, we load up a new one.
+                        if (event.data == YT.PlayerState.ENDED) {
+                            player.loadVideoById(get_random_beyonce());
+                        }
+                    }
+                }
+            });
         }
-        video_el.innerHTML = get_random_beyonce();
     </script>
     <script>
       /* Google Analytics */
