@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Beyonc&eacute;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <span id="header" class="span6 offset2">Random Beyonc&eacute;</span>
+            <span id="tagline" class="span4">She's a she's a diva</span>
+            <div id="video-container" class="span8 offset2">
+                <div id="video"></div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
+    <script type="text/javascript">
+        var video_el = document.getElementById('video');
+        var beyonces = [
+            "QczgvUDskk0",
+            "VBmMU_iwe6U",
+            "4m1EFMoRFvY",
+            "FHp2KgyQUFk",
+            "2EwViQxSJJQ",
+            "sQgd6MccwZc",
+            "Ob7vObnFUJc",
+            "2XY3AvVgDns",
+            "QczgvUDskk0",
+            "CGkvXp0vdng",
+            "eY_mrU8MPfI",
+            "hbnPkK76Ask",
+            "JlxByc0-V40",
+            "rNM5HW13_O8",
+            "Q1dUDzBdnmI",
+            "RioOJ7dZxuw",
+            "ViwtNLUqkMY",
+        ];
+        var get_random_beyonce = function() {
+            var i = Math.floor((Math.random()*beyonces.length+1));
+            return embed_from_id(beyonces[i]); 
+        }
+        var embed_from_id = function(id) {
+            return '<iframe width="0" height="0" src="http://www.youtube.com/embed/' + id + '?autoplay=1" frameborder="0" allowfullscreen></iframe>';
+        }
+        video_el.innerHTML = get_random_beyonce();
+    </script>
+  </body>
+</html>
