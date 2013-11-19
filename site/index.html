@@ -81,7 +81,7 @@
                   },
                   'onStateChange': function onPlayerStateChange(event) {
                         // When the video is done, we load up a new one.
-                        if (event.data == YT.PlayerState.ENDED) {
+                        if (event.data == YT.PlayerState.ENDED && beyonces.length > 0) {
                             player.loadVideoById(get_random_beyonce());
                         }
                     }
