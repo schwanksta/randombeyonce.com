@@ -18,9 +18,9 @@
   <body>
     <div class="container">
         <div class="row">
-            <span id="header" class="span6 offset2">Random Beyonc&eacute;</span>
-            <span id="tagline" class="span4">She's a she's a diva</span>
-            <div id="video-container" class="span8 offset2">
+            <span id="header">Random Beyonc&eacute;</span>
+            <span id="tagline">She's a she's a diva</span>
+            <div id="video-container">
                 <div id="video">
                 <noscript>
                     <img alt="Queen Bey" src="http://i1.ytimg.com/vi/TGyQQUsNLsY/hqdefault.jpg"/>
@@ -28,8 +28,10 @@
                 </noscript>
                 </div>
             </div>
+            <div id="is-mobile" class="hidden-sm hidden-xs"></div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script type="text/javascript">
         var video_el = document.getElementById('video');
@@ -77,7 +79,9 @@
                 videoId: get_random_beyonce(),
                 events: {
                   'onReady': function onPlayerReady(event) {
-                        event.target.playVideo();
+                        // We can't auto-play on iPhones.
+                        if(!$("#is-mobile").is(":hidden"))
+                            event.target.playVideo();
                   },
                   'onStateChange': function onPlayerStateChange(event) {
                         // When the video is done, we load up a new one.
