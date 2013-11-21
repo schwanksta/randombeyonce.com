@@ -1,6 +1,7 @@
 body { background: #000; }
 #header { color: #aaa; font-size: 30px; }
 #tagline { color: #777; font-size: 18px; padding-left:10px;}
+#is-mobile { color: #555; }
 #video-container {
     position: relative;
     padding-bottom: 56.25%;
@@ -8,7 +9,6 @@ body { background: #000; }
     height: 0;
     overflow: hidden;
 }
- 
 #video-container iframe,
 #video-container object,
 #video-container embed {
