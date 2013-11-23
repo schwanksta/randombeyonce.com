@@ -33,8 +33,8 @@
     <div id="wrapper">
         <div id="header">
             <div class="h-content">
-                <h1>Random Beyonc&eacute;<span class="currently">Now Playing: <span id="song">A Song</span></span></h1>
-                <div class="btn">Next Song</div>
+                <h1>Random Beyonc&eacute;<span class="currently">Now Playing: <span id="song">Your favorite song</span></span></h1>
+                <div id="next" class="btn">Next Song</div>
                 <h2>Random Beyonc&eacute; music videos. <br />Delivered to your eyes and ears. That's it.</h2>
                 <ul class="social">
                     <li class="twitter"><a href="https://twitter.com/share?url=http://randombeyonce.com/" target="_blank" onclick="window.open(this.href,'sharefb','toolbar=0,status=0,width=480,height=420'); return false;">T</a></li>
@@ -43,7 +43,6 @@
             </div>
         </div>
         <div id="main">
-            
             <div id="video-container">
                 <div id="video">
                 <noscript>
@@ -103,10 +102,23 @@
             return array_pop(beyonces, i);
         }
 
-        var findHighestZ = function() {
-            $documentDivs = $('div');
+        var play_new_beyonce = function() {
+            player.loadVideoById(get_random_beyonce());
+        }
+
+        var say_my_name = function(player) {
+            $.getJSON("https://gdata.youtube.com/feeds/api/videos/" + player.getVideoData().video_id + "?v=2&alt=json", function(data){ 
+                var strg = data.entry.title.$t,
+                    regx = /.+-(.+)/,
+                    songTitle = strg.match(regx)[1];
+                $("span#song").text(songTitle);
+            });
+        }
+        // finding and returning the highest z-index
+        var love_on_top = function() {
+            $elems = $("div, iframe");
             var highestZ = 0;
-            $.each($documentDivs, function(i, item) {
+            $.each($elems, function(i, item) {
                 var Zindex = $(this).css('z-index');
                 if (Zindex > highestZ && Zindex !== 'auto') {
                     highestZ = Zindex;
@@ -129,30 +141,24 @@
                         // We can't auto-play on iPhones.
                         if(!$("#is-mobile").is(":hidden"))
                             event.target.playVideo();
-                            $.getJSON("https://gdata.youtube.com/feeds/api/videos/" + event.target.getVideoData().video_id + "?v=2&alt=json", function(data){ 
-                                var strg = data.entry.title.$t,
-                                    regx = /.+-(.+)/,
-                                    songTitle = strg.match(regx)[1];
-                                
-                                console.log(songTitle);
-                                $("span#song").text(songTitle);
-                            });
                   },
                   'onStateChange': function onPlayerStateChange(event) {
                         // When the video is done, we load up a new one.
                         if (event.data == YT.PlayerState.ENDED && beyonces.length > 0) {
-                            player.loadVideoById(get_random_beyonce());
+                            play_new_beyonce();
                         }
+                        say_my_name(event.target);
                     }
                 }
             });
 
-            $("div.btn").on("click", function(){
-                location.reload();
+            $("#next").on("click", function(){
+                play_new_beyonce();
+                ga('send', 'event', 'Button', 'Click', 'Next Song');
             });
 
             $("div#header, div#footer").css({
-                "z-index": findHighestZ()+1
+                "z-index": love_on_top()+1
             });
         }
     </script>
