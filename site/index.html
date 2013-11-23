@@ -124,7 +124,7 @@
                     highestZ = Zindex;
                 }
             });
-            return parseInt(highestZ);
+            return parseInt(highestZ)+1;
         };
 
 
@@ -158,7 +158,7 @@
             });
 
             $("div#header, div#footer").hide().css({
-                "z-index": love_on_top()+1
+                "z-index": love_on_top()
             }).show();
         }
     </script>
