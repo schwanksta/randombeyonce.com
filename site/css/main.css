@@ -140,9 +140,10 @@ a:hover {
 	display: inline;
 	float: left;
 	color: #fff;
-	font-size: 12px;
-	line-height: 17px;
+	font-size: 14px;
+	line-height: 18px;
 	border-left: 1px solid #999;
+	margin-top: -1px;
 	padding-left: 16px;
 }
 
