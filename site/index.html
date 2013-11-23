@@ -103,6 +103,18 @@
             return array_pop(beyonces, i);
         }
 
+        var findHighestZ = function() {
+            $documentDivs = $('div');
+            var highestZ = 0;
+            $.each($documentDivs, function(i, item) {
+                var Zindex = $(this).css('z-index');
+                if (Zindex > highestZ && Zindex !== 'auto') {
+                    highestZ = Zindex;
+                }
+            });
+            return highestZ;
+        };
+
 
         // 3. This function creates an <iframe> (and YouTube player)
         //    after the API code downloads.
@@ -137,6 +149,10 @@
 
             $("div.btn").on("click", function(){
                 location.reload();
+            });
+
+            $("div#header, div#footer").css({
+                "z-index": findHighestZ()+1
             });
         }
     </script>
