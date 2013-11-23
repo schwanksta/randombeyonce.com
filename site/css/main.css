@@ -385,11 +385,14 @@ a img {
 
 /*For Responsive Design: 'target' divided by 'context' = 'result'   */
 
+@media only screen and (min-width:480px) and (max-width:960px) {
+	#header .h-content h2 {
+		display: none;
+	}
+}
+
 @media only screen and (max-width:480px) {
 
-	#main {
-		padding-top: 140px;
-	}
 	#header {
 		background-color: rgba(0, 0, 0, 1);
 	}
@@ -412,6 +415,10 @@ a img {
 	#header .h-content ul.social li,
 	#header .h-content ul.social li a {
 		opacity: 1;
+	}
+
+	#video-container iframe {
+		padding-top: 150px;
 	}
 
 	#video-container iframe,
