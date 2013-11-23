@@ -45,6 +45,7 @@ a:hover {
 /*HEADER------------------------------------------------------------*/
 
 #header {
+	display: none;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -327,6 +328,7 @@ div.btn:active {
 /*FOOTER------------------------------------------------------------*/
 
 #footer {
+	display: none;
 	position: fixed;
 	bottom: 0;
 	left: 0;

@@ -94,17 +94,17 @@
             // slice() modifies the array in-place and returns an array
             // of the element we want.
             return arr.splice(i,1)[0]; 
-        }
+        };
 
         var get_random_beyonce = function() {
             var i = Math.floor((Math.random()*beyonces.length));
             // Pops out the video ID we're using so we don't re-use
             return array_pop(beyonces, i);
-        }
+        };
 
         var play_new_beyonce = function() {
             player.loadVideoById(get_random_beyonce());
-        }
+        };
 
         var say_my_name = function(player) {
             $.getJSON("https://gdata.youtube.com/feeds/api/videos/" + player.getVideoData().video_id + "?v=2&alt=json", function(data){ 
@@ -113,7 +113,7 @@
                     songTitle = strg.match(regx)[1];
                 $("span#song").text(songTitle);
             });
-        }
+        };
         // finding and returning the highest z-index
         var love_on_top = function() {
             $elems = $("div, iframe");
@@ -125,6 +125,12 @@
                 }
             });
             return parseInt(highestZ)+1;
+        };
+
+        var show_header = function(){
+            $("div#header, div#footer").css({
+                "z-index": love_on_top()
+            }).delay(300).show();
         };
 
 
@@ -141,6 +147,7 @@
                         // We can't auto-play on iPhones.
                         if(!$("#is-mobile").is(":hidden"))
                             event.target.playVideo();
+                            show_header();
                   },
                   'onStateChange': function onPlayerStateChange(event) {
                         // When the video is done, we load up a new one.
@@ -156,10 +163,6 @@
                 play_new_beyonce();
                 ga('send', 'event', 'Button', 'Click', 'Next Song');
             });
-
-            $("div#header, div#footer").hide().css({
-                "z-index": love_on_top()
-            }).show();
         }
     </script>
     <script>
