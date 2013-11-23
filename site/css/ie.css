@@ -1,0 +1,9 @@
+/* To accomodate various cross-browser compatibility hacks. Just IE for now. */
+
+* html .group { /*For IE6*/
+	height:1%;
+} 
+
+*:first-child+html .group { /*For IE7*/
+	min-height:1px;
+} 
