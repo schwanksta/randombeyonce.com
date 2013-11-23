@@ -124,7 +124,7 @@
                     highestZ = Zindex;
                 }
             });
-            return highestZ;
+            return parseInt(highestZ);
         };
 
 
@@ -157,9 +157,9 @@
                 ga('send', 'event', 'Button', 'Click', 'Next Song');
             });
 
-            $("div#header, div#footer").css({
+            $("div#header, div#footer").hide().css({
                 "z-index": love_on_top()+1
-            });
+            }).show();
         }
     </script>
     <script>
