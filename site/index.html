@@ -1,29 +1,49 @@
+<!-- HTML5 ENCODING -->
 <!DOCTYPE html>
-<html>
-  <head>
+<head>
+    <meta charset="utf-8" />
     <title>Random Beyonc&eacute;</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Random Beyonce music videos delivered to your ears. That's it." />
+    <!-- meta tags for facebook -->
+    <meta property="og:title" content="Random Beyonc&eacute;"/>
+    <meta property="og:type" content="site"/>
+    <meta property="og:url" content="http://randombeyonce.com/"/>
+<!--     <meta property="og:image" content="TK Image URL"/> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Random Beyonc&eacute; music videos. Delivered to your eyes and ears. That's it." />
     <meta property="og:image" content="http://i1.ytimg.com/vi/4m1EFMoRFvY/hqdefault.jpg" />
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/site.css" rel="stylesheet">
 
+    <!-- meta tags for twitter -->
+    <meta property="twitter:site" content="@Schwanksta">
+    <meta property="twitter:card" content="Random Beyonc&eacute; music videos. Delivered to your eyes and ears. That's it.">
+    <meta property="twitter:url" content="http://randombeyonce.com/">
+    <meta property="twitter:title" content="Random Beyoncé">
+    <meta property="twitter:description" content="Random Beyonc&eacute; music videos. Delivered to your eyes and ears. That's it.">
+<!--     <meta property="twitter:image" content="TK Image URL"> -->
+    <link rel="stylesheet" type="text/css" href="_css/screenImport.css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <div class="container">
-        <div class="row">
-            <span id="header">Random Beyonc&eacute;</span>
-            <span id="tagline">She's a she's a diva</span>
-            <div id="is-mobile" class="hidden-sm hidden-xs">
-                For when you need a random dose of Beyonce songs. Refresh or keep listening for a new one.
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div class="h-content">
+                <h1>Random Beyonc&eacute;<span class="currently">Now Playing: <span id="song">A Song</span></span></h1>
+                <div class="btn">Next Song</div>
+                <h2>Random Beyonc&eacute; music videos. <br />Delivered to your eyes and ears. That's it.</h2>
+                <ul class="social">
+                    <li class="twitter"><a href="https://twitter.com/share?url=http://randombeyonce.com/" target="_blank" onclick="window.open(this.href,'sharefb','toolbar=0,status=0,width=480,height=420'); return false;">T</a></li>
+                    <li class="facebook"><a href="http://www.facebook.com/sharer.php?u=http://randombeyonce.com/" title="Share to Facebook" target="_blank" onclick="window.open(this.href,'sharefb','toolbar=0,status=0,width=480,height=420'); return false;">F</a></li>
+                </ul>
             </div>
+        </div>
+        <div id="main">
+            
             <div id="video-container">
                 <div id="video">
                 <noscript>
@@ -31,6 +51,11 @@
                     <p>Sorry, The Queen demands you have a better browser.</p>
                 </noscript>
                 </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="f-content">
+                <p>Built by <a href="https://github.com/Schwanksta" target="_blank">Ken Schwencke</a> and <a href="https://github.com/troyericg" target="_blank">Troy Griggs</a>.</p>
             </div>
         </div>
     </div>
@@ -92,6 +117,14 @@
                         // We can't auto-play on iPhones.
                         if(!$("#is-mobile").is(":hidden"))
                             event.target.playVideo();
+                            $.getJSON("https://gdata.youtube.com/feeds/api/videos/" + event.target.getVideoData().video_id + "?v=2&alt=json", function(data){ 
+                                var strg = data.entry.title.$t,
+                                    regx = /.+-(.+)/,
+                                    songTitle = strg.match(regx)[1];
+                                
+                                console.log(songTitle);
+                                $("span#song").text(songTitle);
+                            });
                   },
                   'onStateChange': function onPlayerStateChange(event) {
                         // When the video is done, we load up a new one.
@@ -100,6 +133,10 @@
                         }
                     }
                 }
+            });
+
+            $("div.btn").on("click", function(){
+                location.reload();
             });
         }
     </script>
@@ -113,5 +150,8 @@
       ga('create', 'UA-45849429-1', 'randombeyonce.com');
       ga('send', 'pageview');
     </script>
-  </body>
+    
+</body>
+
+
 </html>
