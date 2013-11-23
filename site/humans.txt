@@ -1,5 +1,14 @@
-Created with love by Ken Schwencke
-Twitter: @schwanksta
+Created with love by Ken Schwencke and Troy Griggs.
+
+----------------------
+
+Ken: @schwanksta
+Troy: @TroyEricG
+
+----------------------
+
 Repo: http://github.com/Schwanksta/randombeyonce.com
+
+----------------------
 
 With many thanks to Beyonce Knowles. Where would we be without her?

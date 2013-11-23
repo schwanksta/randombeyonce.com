@@ -1,0 +1,445 @@
+/* "Before he swings the bat, a real slugger imagines an 
+      arc inside his heart, arching directly to Heaven." */
+
+
+/*BASE STYLES------------------------------------------------------------*/
+
+body {
+	background-color: #1a1a1a;
+	font-family: "Gill Sans", Arial, Helvetica, sans-serif;
+	color:#3e3e3e;
+	font-size:1em;
+
+	/* to make my fonts prettier */
+	font-smoothing:antialiased;
+	-o-font-smoothing:antialiased;
+	-moz-font-smoothing:antialiased;
+	-webkit-font-smoothing:antialiased;
+}
+
+
+a:link, a:visited {
+	color:#fff;
+	opacity:1;
+	outline:none;
+	text-decoration:none;
+}
+
+
+a:hover {
+	text-decoration: underline;
+}
+
+
+
+/*PAGE STRUCTURE------------------------------------------------------------*/
+
+#wrapper {
+	display:block;
+	position:relative;
+	width:100%;
+	overflow:hidden;
+}
+
+
+/*HEADER------------------------------------------------------------*/
+
+#header {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 1);
+	width: 100%;
+	min-height: 96px;
+	z-index: 9;
+	transition-duration: 0.4s;
+	-o-transition-duration: 0.4s;
+	-moz-transition-duration: 0.4s;
+	-webkit-transition-duration: 0.4s;
+}
+
+#header .h-content {
+	display: inline-block;
+	font-family: Georgia, serif;
+	padding: 36px 12px 12px 12px;
+	width: 96%;
+	padding-left: 2%;
+	opacity: 1;
+}
+
+#header:hover {
+	background-color: rgba(0, 0, 0, 1);
+	transition-duration: 0.8s;
+	-o-transition-duration: 0.8s;
+	-moz-transition-duration: 0.8s;
+	-webkit-transition-duration: 0.8s;
+}
+
+#header .h-content h1 {
+	position: relative;
+	display: inline;
+	float: left;
+	color: #CEAD24;
+	font-family: "PerpetuaTitlingMT-Light", Georgia, serif;
+	font-size: 36px;
+	letter-spacing: 1px;
+	text-indent: -9999px;
+	text-transform: uppercase;
+	margin-top: -4px;
+	margin-right: 24px;
+	background: url(../assets/images/title_text.png) no-repeat 0px 0px;
+	width: 343px;
+	height: 60px;
+	overflow: hidden;
+	transition-duration: 0.4s;
+	-o-transition-duration: 0.4s;
+	-moz-transition-duration: 0.4s;
+	-webkit-transition-duration: 0.4s;
+}
+
+#header:hover .h-content h1 {
+	background-position: -169px 0px;
+	transition-duration: 0.8s;
+	-o-transition-duration: 0.8s;
+	-moz-transition-duration: 0.8s;
+	-webkit-transition-duration: 0.8s;
+}
+
+#header .h-content h1 span.currently {
+	position: absolute;
+	color: #fff;
+	right: 0px;
+	font: normal normal normal 13px/19px "Gill Sans", Arial, Helvetica, sans-serif;
+	text-align: left;
+	text-indent: 0;
+	text-transform: none;
+	width: 144px;
+	margin-top: 100px;
+	opacity: 0;
+	transition-duration: 0.4s;
+	-o-transition-duration: 0.4s;
+	-moz-transition-duration: 0.4s;
+	-webkit-transition-duration: 0.4s;
+}
+
+#header .h-content h1 span.currently span#song {
+	display: block;
+	font-style: italic;
+}
+
+#header:hover .h-content h1 span.currently {
+	margin-top: 2px;
+	opacity: 1;
+	transition-duration: 0.8s;
+	-o-transition-duration: 0.8s;
+	-moz-transition-duration: 0.8s;
+	-webkit-transition-duration: 0.8s;
+}
+
+#header .h-content h2 {
+	display: inline;
+	float: left;
+	color: #fff;
+	font-size: 14px;
+	line-height: 18px;
+	border-left: 1px solid #999;
+	margin-top: -1px;
+	padding-left: 16px;
+}
+
+#header .h-content ul.social {
+	display: inline-block;
+	float: right;
+	color: #fff;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 34px;
+	font-weight: 600;
+}
+
+#header .h-content ul.social li,
+#header .h-content ul.social li a {
+	float: left;
+	margin-right: 12px;
+	width: 30px;
+	height: 34px;
+	text-align: center;
+	opacity: 0.4;
+	text-decoration: none;
+	text-indent: -9999px;
+}
+
+#header .h-content ul.social li.twitter {
+	background: url(../assets/images/share-t.png) no-repeat 0px 0px;
+}
+
+#header .h-content ul.social li.facebook {
+	background: url(../assets/images/share-f.png) no-repeat 0px 0px;
+}
+
+#header:hover ul.social li,
+#header:hover ul.social li a {
+	opacity: 1;
+	text-decoration: none;
+	transition-duration: 0.8s;
+	-o-transition-duration: 0.8s;
+	-moz-transition-duration: 0.8s;
+	-webkit-transition-duration: 0.8s;
+}
+
+#header .h-content ul.social li.twitter:hover {
+	background: url(../assets/images/share-t-on.png) no-repeat 0px 0px;
+}
+
+#header .h-content ul.social li.facebook:hover {
+	background: url(../assets/images/share-f-on.png) no-repeat 0px 0px;
+}
+
+
+
+
+/*MAIN STYLES------------------------------------------------------------*/
+
+#main {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+#main .loading {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -130px;
+	width: 260px;
+	height: 30px;
+	text-transform: uppercase;
+	overflow: hidden;
+	padding-top: 10px;
+	z-index: -1;
+}
+
+#main .loading img {
+	position: absolute;
+	right:-26px;
+	top: -32px;
+	width: 100px;
+	height: 100px;
+}
+
+/* from ken */
+#video-container {
+    position: fixed;
+    padding-bottom: 0;
+    padding-top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#video-container iframe,
+#video-container object,
+#video-container embed {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+
+
+/*SECONDARY STYLES------------------------------------------------------------*/
+
+#is-mobile { color: #555; }
+
+div.btn {
+	position: relative;
+	display: inline;
+	float: left;
+	color: #ffffff;
+	font-family: "Gill Sans", Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: 400;
+	letter-spacing: 1px;
+	-webkit-border-radius: 3;
+	-moz-border-radius: 3;
+	border-radius: 3px;
+	background-color: #5854cc;
+	margin-right: 12px;
+	padding: 12px 36px 11px 14px;
+	text-decoration: none;
+	text-transform: uppercase;
+	cursor: pointer;
+
+	transition-duration: 0.4s;
+	-o-transition-duration: 0.4s; /* Opera */
+	-moz-transition-duration: 0.4s; /* Firefox 4 */
+	-webkit-transition-duration: 0.4s; /* Safari and Chrome */
+}
+
+div.btn:before {
+	content: "";
+	position: absolute;
+	top: 8px;
+	right: 12px;
+	background: url(../assets/images/reload-icon.png) no-repeat 0px 0px;
+	background-size: 18px;
+	width: 20px;
+	height: 20px;
+	 -webkit-filter: invert(100%);
+
+	transition-duration: 0.4s;
+	-o-transition-duration: 0.4s; /* Opera */
+	-moz-transition-duration: 0.4s; /* Firefox 4 */
+	-webkit-transition-duration: 0.4s; /* Safari and Chrome */
+}
+
+div.btn:hover {
+	background-color: #8784d1;
+	text-decoration: none;
+	transition-duration: 0.4s;
+	-o-transition-duration: 0.4s; /* Opera */
+	-moz-transition-duration: 0.4s; /* Firefox 4 */
+	-webkit-transition-duration: 0.4s; /* Safari and Chrome */
+}
+
+div.btn:hover:before {
+	-webkit-transform: rotate(40deg);
+	-moz-transform: rotate(40deg);
+	-ms-transform: rotate(40deg);
+	-o-transform: rotate(40deg);
+	transform: rotate(40deg);
+
+	transition-duration: 0.4s;
+	-o-transition-duration: 0.4s; /* Opera */
+	-moz-transition-duration: 0.4s; /* Firefox 4 */
+	-webkit-transition-duration: 0.4s; /* Safari and Chrome */
+}
+
+div.btn:active {
+	margin-top: 2px;
+}
+
+
+/*FOOTER------------------------------------------------------------*/
+
+#footer {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background-color:#000;
+	width:100%;
+	z-index: 9;
+}
+
+#footer .f-content {
+	width:100%;
+}
+
+#footer .f-content p {
+	color:#999;
+	font: normal normal normal 13px/19px "Gill Sans", Arial, Helvetica, sans-serif;
+	padding: 24px;
+}
+
+#footer:hover {
+	color:#f4f4f4;
+}
+
+
+
+
+/*MISC------------------------------------------------------------*/
+
+.hide {
+	display:none;
+}
+
+a img {
+	border:none;
+}
+
+
+/*  Formerly known as "Clearfix"  */ 
+/*.group {display: inline-block;}*/
+.group:after {content: "."; clear: both;display: block;font-size: 0;height: 0;visibility: hidden;}
+
+
+/*Keeps certain strings from being selectable (highlight-able) on pages.*/
+.unselectable {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+}
+
+
+/*For Responsive Design: 'target' divided by 'context' = 'result'   */
+
+@media only screen and (min-width:480px) and (max-width:960px) {
+	#header .h-content h2 {
+		display: none;
+	}
+}
+
+@media only screen and (max-width:480px) {
+
+	#header {
+		background-color: rgba(0, 0, 0, 1);
+	}
+	#header .h-content h1 {
+		background-position: -169px 0px;
+	}
+	
+	#header .h-content h1 span.currently {
+		margin-top: 2px;
+		width: 174px;
+		opacity: 1;
+	}
+
+	#header .h-content h2 {
+		display: none;
+		border-left: none;
+		padding-left: 0px;
+	}
+
+	#header .h-content ul.social li,
+	#header .h-content ul.social li a {
+		opacity: 1;
+	}
+
+	#video-container iframe {
+		padding-top: 150px;
+	}
+
+	#video-container iframe,
+	#video-container object,
+	#video-container embed {
+		height: auto;
+	}
+}
+
+/*LIST OF STARTER MEDIA QUERIES: 
+
+@media only screen and (max-width:320px) {}
+@media only screen and (min-width:480px) and (max-width:768px) {}
+@media only screen and (min-width:768px) and (max-width:960px) {}
+@media only screen and (min-width:960px) and (max-width:1440px) {}
+@media only screen and (min-width:1440px) {}
+
+*/
+
+
+
+/*The End*/
