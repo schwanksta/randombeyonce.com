@@ -133,9 +133,8 @@
             }).delay(300).show();
         };
 
-
-        // 3. This function creates an <iframe> (and YouTube player)
-        //    after the API code downloads.
+        //  This function creates an <iframe> (and YouTube player)
+        //  after the API code downloads.
         var player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('video', {
@@ -144,10 +143,11 @@
                 videoId: get_random_beyonce(),
                 events: {
                   'onReady': function onPlayerReady(event) {
-                        // We can't auto-play on iPhones.
-                        if(!$("#is-mobile").is(":hidden"))
+                        // We can't auto-play on iPhones, iPads, etc.
+                        if($(document).width() >= 768) {
                             event.target.playVideo();
-                            show_header();
+                        }
+                        show_header();
                   },
                   'onStateChange': function onPlayerStateChange(event) {
                         // When the video is done, we load up a new one.
