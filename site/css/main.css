@@ -88,6 +88,7 @@ a:hover {
 	text-transform: uppercase;
 	margin-top: -4px;
 	margin-right: 24px;
+    content: "Random Hot Chip";
 	background: url(../assets/images/title_text.png) no-repeat 0px 0px;
 	width: 343px;
 	height: 60px;
@@ -109,7 +110,7 @@ a:hover {
 #header .h-content h1 span.currently {
 	position: absolute;
 	color: #fff;
-	right: 0px;
+	right: -15px;
 	font: normal normal normal 13px/19px "Gill Sans", Arial, Helvetica, sans-serif;
 	text-align: left;
 	text-indent: 0;
@@ -148,6 +149,7 @@ a:hover {
 	padding-left: 16px;
 }
 
+
 #header .h-content ul.social {
 	display: inline-block;
 	float: right;
@@ -161,12 +163,21 @@ a:hover {
 #header .h-content ul.social li a {
 	float: left;
 	margin-right: 12px;
-	width: 30px;
-	height: 34px;
+	width: 50px;
+	height: 55px;
 	text-align: center;
 	opacity: 0.4;
 	text-decoration: none;
 	text-indent: -9999px;
+}
+
+#header .h-content ul.social li.graham {
+    width:50px;
+    background: url(../assets/images/graham-1.png) no-repeat 0px 0px;   
+}
+
+#header .h-content ul.social li.graham:hover {
+    background: url(../assets/images/graham-2.png) no-repeat 0px 0px;   
 }
 
 #header .h-content ul.social li.twitter {
@@ -196,9 +207,61 @@ a:hover {
 }
 
 
-
-
 /*MAIN STYLES------------------------------------------------------------*/
+
+.overlay {
+    display: none;
+    z-index: 999999999999999;
+    width: 100%; height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5); /*dim the background*/
+    text-align: center;
+}
+
+#heart {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 90px;
+}
+#heart:before,
+#heart:after {
+    position: absolute;
+    content: "";
+    left: 50px;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    background: red;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+}
+#heart:after {
+    left: 0;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}
 
 #main {
 	position: relative;
@@ -333,11 +396,13 @@ div.btn:active {
 	bottom: 0;
 	left: 0;
 	background-color:#000;
+    height: 25px;
 	width:100%;
 	z-index: 9;
 }
 
 #footer .f-content {
+    padding: 4px;
 	width:100%;
 }
 
